@@ -28,11 +28,10 @@ class App extends Component {
     ],
   };
   // writing the handle score change to get passed to the child
-  handleScoreChange = (delta) => {
-    // this.setState((prevState) => ({
-    //   score: prevState.score + 1,
-    // }));
-    console.log(delta);
+  handleScoreChange = (index, delta) => {
+    this.setState((prevState) => ({
+      score: (prevState.players[index].score += delta),
+    }));
   };
   handleRemovePlayer = (id) => {
     this.setState((prevState) => {
@@ -48,8 +47,8 @@ class App extends Component {
         <Header title="Scoreboard" totalPlayers={this.state.players.length} />
 
         {/* Players list */}
-        {this.state.players.map((player) => (
-          <Player name={player.name} id={player.id} key={player.id.toString()} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} />
+        {this.state.players.map((player, index) => (
+          <Player name={player.name} id={player.id} key={player.id.toString()} index={index} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} />
         ))}
       </div>
     );

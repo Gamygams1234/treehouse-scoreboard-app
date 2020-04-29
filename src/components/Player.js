@@ -10,7 +10,7 @@ const Player = (props) => {
         {props.name}
       </span>
       {/*getting the function from props and passing it on */}
-      <Counter handleScoreChange={props.handleScoreChange} score={props.score} />
+      <Counter id={props.id} handleScoreChange={props.handleScoreChange} score={props.score} index={props.index} />
     </div>
   );
 };
