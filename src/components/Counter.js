@@ -3,12 +3,6 @@ import React from "react";
 const Counter = (props) => {
   // delting state from this component and putting it to the parent element
 
-  //   incrementScore = () => {
-  //     this.setState((prevState) => ({
-  //       score: prevState.score + 1,
-  //     }));
-  //   };
-
   //   decrementScore = () => {
   //     this.setState((prevState) => ({
   //       score: prevState.score - 1,
@@ -17,9 +11,16 @@ const Counter = (props) => {
 
   return (
     <div className="counter">
-      <button className="counter-action decrement"> - </button>
+      {/* calling the function when the button is clicked in Counter */}
+      <button onClick={() => props.handleScoreChange(-1)} className="counter-action decrement">
+        {" "}
+        -{" "}
+      </button>
       <span className="counter-score">{props.score}</span>
-      <button className="counter-action increment"> + </button>
+      <button onClick={() => props.handleScoreChange(+1)} className="counter-action increment">
+        {" "}
+        +{" "}
+      </button>
     </div>
   );
 };

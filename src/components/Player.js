@@ -9,8 +9,8 @@ const Player = (props) => {
         </button>
         {props.name}
       </span>
-
-      <Counter score={props.score} />
+      {/*getting the function from props and passing it on */}
+      <Counter handleScoreChange={props.handleScoreChange} score={props.score} />
     </div>
   );
 };

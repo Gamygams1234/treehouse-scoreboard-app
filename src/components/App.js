@@ -27,7 +27,13 @@ class App extends Component {
       },
     ],
   };
-
+  // writing the handle score change to get passed to the child
+  handleScoreChange = (delta) => {
+    // this.setState((prevState) => ({
+    //   score: prevState.score + 1,
+    // }));
+    console.log(delta);
+  };
   handleRemovePlayer = (id) => {
     this.setState((prevState) => {
       return {
@@ -43,7 +49,7 @@ class App extends Component {
 
         {/* Players list */}
         {this.state.players.map((player) => (
-          <Player name={player.name} id={player.id} key={player.id.toString()} removePlayer={this.handleRemovePlayer} score={player.score} />
+          <Player name={player.name} id={player.id} key={player.id.toString()} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} />
         ))}
       </div>
     );
