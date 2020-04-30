@@ -29,12 +29,18 @@ class App extends Component {
     ],
   };
   // writing the handle score change to get passed to the child
-  handleAddPlayer = (player) => {
-    player.id = Math.random();
-    player.score = 0;
-    let players = [...this.state.players, player];
-    this.setState({
-      players: players,
+  handleAddPlayer = (name) => {
+    this.setState((prevState) => {
+      return {
+        players: [
+          ...prevState.players,
+          {
+            name,
+            score: 0,
+            id: (this.prevPlayerId += 1),
+          },
+        ],
+      };
     });
   };
   handleScoreChange = (index, delta) => {
