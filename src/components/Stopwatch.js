@@ -19,6 +19,10 @@ export default class Stopwatch extends Component {
   componentDidMount() {
     this.intervalId = setInterval(() => this.tick(), 100);
   }
+  // this is to prevnent  any memory leaks in the app incase something does happen
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
   tick = () => {
     if (this.state.isRunning) {
       const now = Date.now();
