@@ -1,17 +1,16 @@
 import React from "react";
 
-const Counter = (props) => {
-  let index = props.index;
-
+// we can also destructure like this by unpacking at the top
+const Counter = ({ index, handleScoreChange, score }) => {
   return (
     <div className="counter">
       {/* calling the function when the button is clicked in Counter */}
-      <button onClick={() => props.handleScoreChange(index, -1)} className="counter-action decrement">
+      <button onClick={() => handleScoreChange(index, -1)} className="counter-action decrement">
         {" "}
         -{" "}
       </button>
-      <span className="counter-score">{props.score}</span>
-      <button onClick={() => props.handleScoreChange(index, +1)} className="counter-action increment">
+      <span className="counter-score">{score}</span>
+      <button onClick={() => handleScoreChange(index, +1)} className="counter-action increment">
         {" "}
         +{" "}
       </button>

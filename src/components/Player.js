@@ -2,17 +2,19 @@ import React, { PureComponent } from "react";
 import Counter from "./Counter";
 class Player extends PureComponent {
   render() {
-    console.log(this.props.name + " rendered");
+    // this is destructuring in s class component
+    const { name, handleScoreChange, removePlayer, id, index, score } = this.props;
+    console.log(name + " rendered");
     return (
       <div className="player">
         <span className="player-name">
-          <button className="remove-player" onClick={() => this.props.removePlayer(this.props.id)}>
+          <button className="remove-player" onClick={() => removePlayer(id)}>
             ✖
           </button>
-          {this.props.name}
+          {name}
         </span>
 
-        <Counter id={this.props.id} handleScoreChange={this.props.handleScoreChange} score={this.props.score} index={this.props.index} />
+        <Counter handleScoreChange={handleScoreChange} score={score} index={index} />
       </div>
     );
   }
