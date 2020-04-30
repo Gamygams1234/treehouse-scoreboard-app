@@ -1,6 +1,17 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import Counter from "./Counter";
 class Player extends PureComponent {
+  // this will show what prop types we need on every component and page
+  static propTypes = {
+    handleScoreChange: PropTypes.func,
+    removePlayer: PropTypes.func,
+    // this will throw an error if a prop is not passed through
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number,
+    id: PropTypes.number,
+    index: PropTypes.number,
+  };
   render() {
     // this is destructuring in s class component
     const { name, handleScoreChange, removePlayer, id, index, score } = this.props;

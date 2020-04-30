@@ -59,7 +59,8 @@ class App extends Component {
   render() {
     return (
       <div className="scoreboard">
-        <Header title="Scoreboard" totalPlayers={this.state.players} />
+        {/* Took out the header title because we are defaulting it in the Header Component */}
+        <Header totalPlayers={this.state.players} />
 
         {/* Players list */}
         {this.state.players.map((player, index) => (

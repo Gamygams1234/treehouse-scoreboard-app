@@ -1,5 +1,6 @@
 import React from "react";
 import Stats from "./Stats";
+import PropTypes from "prop-types";
 import Stopwatch from "./Stopwatch";
 
 export default function Header(props) {
@@ -13,3 +14,11 @@ export default function Header(props) {
     </header>
   );
 }
+Header.propTypes = {
+  title: PropTypes.string,
+  totalPlayers: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+Header.defaultProps = {
+  title: "Scoreboard",
+};
