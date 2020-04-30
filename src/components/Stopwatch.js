@@ -28,12 +28,20 @@ export default class Stopwatch extends Component {
       }));
     }
   };
+  handleReset = () => {
+    if (!this.state.isRunning) {
+      this.setState({
+        elapsedTime: 0,
+      });
+    }
+  };
   render() {
+    const seconds = Math.floor(this.state.elapsedTime / 1000);
     return (
       <div className="stopwatch">
         <h2>Stopwatch</h2>
-        <span className="stopwatch-time">0</span>
-        <button onClick={this.handleStopwatch}>{this.state.isRunning ? "Stop" : "Start"}</button> <button>Reset</button>
+        <span className="stopwatch-time">{seconds}</span>
+        <button onClick={this.handleStopwatch}>{this.state.isRunning ? "Stop" : "Start"}</button> <button onClick={this.handleReset}>Reset</button>
       </div>
     );
   }
