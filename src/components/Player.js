@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import Counter from "./Counter";
+import Icon from "./Icon";
 class Player extends PureComponent {
   // this will show what prop types we need on every component and page
   static propTypes = {
@@ -21,7 +22,8 @@ class Player extends PureComponent {
         <span className="player-name">
           <button className="remove-player" onClick={() => removePlayer(id)}>
             ✖
-          </button>
+          </button>{" "}
+          <Icon isHighScore={this.props.isHighScore} />
           {name}
         </span>
 

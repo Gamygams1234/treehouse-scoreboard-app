@@ -29,6 +29,14 @@ class App extends Component {
     ],
   };
   // writing the handle score change to get passed to the child
+  getHighScore = () => {
+    const scores = this.state.players.map((p) => p.score);
+    const highScore = Math.max(...scores);
+    if (highScore) {
+      return highScore;
+    }
+    return null;
+  };
   handleAddPlayer = (name) => {
     this.setState((prevState) => {
       return {
@@ -57,6 +65,7 @@ class App extends Component {
   };
 
   render() {
+    const highScore = this.getHighScore();
     return (
       <div className="scoreboard">
         {/* Took out the header title because we are defaulting it in the Header Component */}
@@ -64,7 +73,7 @@ class App extends Component {
 
         {/* Players list */}
         {this.state.players.map((player, index) => (
-          <Player name={player.name} id={player.id} key={player.id.toString()} index={index} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} />
+          <Player name={player.name} id={player.id} key={player.id.toString()} index={index} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} isHighScore={highScore === player.score} />
         ))}
         <AddPlayerForm handleAddPlayer={this.handleAddPlayer} />
       </div>
