@@ -6,6 +6,7 @@ export default class AddPlayerForm extends Component {
   };
   handleChange = (e) => {
     this.setState({
+      // could pass in name: e.target.value
       [e.target.id]: e.target.value,
     });
   };
@@ -19,7 +20,7 @@ export default class AddPlayerForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} type="text" id={"name"} value={this.state.name} placeholder="Enter a player's name" />
+        <input onChange={this.handleChange} type="text" id="name" value={this.state.name} placeholder="Enter a player's name" />
         <input type="submit" placeholder="Add Player" />
       </form>
     );
