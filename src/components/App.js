@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Player from "./Player";
+import { Provider } from "./Context/index";
+
 import AddPlayerForm from "./AddPlayerForm";
 
 class App extends Component {
@@ -67,16 +69,19 @@ class App extends Component {
   render() {
     const highScore = this.getHighScore();
     return (
-      <div className="scoreboard">
-        {/* Took out the header title because we are defaulting it in the Header Component */}
-        <Header totalPlayers={this.state.players} />
+      // provider is now the parent element of the elements in JSX
+      <Provider>
+        <div className="scoreboard">
+          {/* Took out the header title because we are defaulting it in the Header Component */}
+          <Header totalPlayers={this.state.players} />
 
-        {/* Players list */}
-        {this.state.players.map((player, index) => (
-          <Player name={player.name} id={player.id} key={player.id.toString()} index={index} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} isHighScore={highScore === player.score} />
-        ))}
-        <AddPlayerForm handleAddPlayer={this.handleAddPlayer} />
-      </div>
+          {/* Players list */}
+          {this.state.players.map((player, index) => (
+            <Player name={player.name} id={player.id} key={player.id.toString()} index={index} removePlayer={this.handleRemovePlayer} handleScoreChange={this.handleScoreChange} score={player.score} isHighScore={highScore === player.score} />
+          ))}
+          <AddPlayerForm handleAddPlayer={this.handleAddPlayer} />
+        </div>
+      </Provider>
     );
   }
 }
